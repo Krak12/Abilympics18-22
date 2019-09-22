@@ -19,6 +19,7 @@ namespace Organization_Zero0
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            //ввод логина и пароля
             var userTA = new dbDataSetTableAdapters.WorkersTableAdapter();
             var users = userTA.GetDataByLoginAndPass(textBox1.Text, textBox2.Text);
             
@@ -27,6 +28,7 @@ namespace Organization_Zero0
                 MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            //переход по формам
             Data.UserAutorized = userTA.GetDataByLogin(textBox1.Text.Trim()).First();
 
             if (Data.UserAutorized.TypeAcc == 1)
@@ -64,6 +66,7 @@ namespace Organization_Zero0
             }
         }
 
+        //функция Показать пароль
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             textBox2.UseSystemPasswordChar = !checkBox1.Checked;
